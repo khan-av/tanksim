@@ -1,7 +1,7 @@
 /**
  * @file tanksim.h
  * @brief Header file for the tank simulation program.
- * @author Rashad Khan
+ * @author Rashad
  * @date 2024-06-10
  */
 
@@ -16,10 +16,13 @@ enum MovementDirection { POSITIVE, NEGATIVE };
 enum Axis { X_AXIS, Y_AXIS, Z_AXIS }; 
 struct AngleComposite { double PITCH; double YAW;};
 
+class Projectile;
+class Tank;
+
 /**
  * @class Tank
  * @brief Represents a tank in the simulation.
- * @author Rashad Khan
+ * @author Rashad
  * @ingroup TankSim
  * @date 2024-06-10 
  */
@@ -32,11 +35,12 @@ public:
     std::string getStatus();
     std::string printStatus();
 private:
-    class Projectile ammotype; // Forward declaration of nested class
+    Projectile* ammotype; // Pointer to Projectile object
     double positionX;
     double positionY;
     double positionZ;
     std::string name;  
+    struct 
 
     double direction; // in degrees
     int ammo;
@@ -72,24 +76,7 @@ std::string Tank::printStatus() {
     std::cout << getStatus() << std::endl;
     return getStatus();
 }
-/**
- * @class Projectile
- * @brief Represents a projectile fired by a tank.
- * @author Rashad Khan
- * @date 2024-06-10 
- * 
- */
-class Projectile {
-public:
-    Projectile(double startX, double startY, double startZ, double directionx, double directiony, double directionz);
-    void launch();
-    void updatePosition(double timeDelta);
-private:
-    double posX;
-    double posY;
-    double posZ;
-    double direction; // in degrees
-};
+
 
 #endif // TANKSIM_H
 
